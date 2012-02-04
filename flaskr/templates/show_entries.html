@@ -13,9 +13,10 @@
 {% endif %}
 <ul class=entries>
     {% for entry in entries %}
-    <li><h2>{{ entry.title }}</h2>{{ entry.content|safe }}
-        {% else %}
-    <li><em>Unbelievable.  No entries here so far</em>
-        {% endfor %}
+        <li><h2>{{ entry.title }} <em> - {{entry.email}}</em></h2>
+        {{ entry.content|safe }}
+    {% else %}
+        <li><em>Unbelievable.  No entries here so far</em>
+    {% endfor %}
 </ul>
 {% endblock %}
