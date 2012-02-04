@@ -20,7 +20,8 @@ def add_entry():
     if not session.get('logged_in'):
         abort(401)
 
-    post = Post(title=request.form['title'], content=request.form['text'])
+    user = users.get_current_user()
+    post = Post(email = user.email(), title=request.form['title'], content=request.form['text'])
     post.put()
     flash('New entry was successfully posted')
     return redirect(url_for('show_entries'))
